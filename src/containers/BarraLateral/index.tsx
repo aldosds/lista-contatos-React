@@ -7,7 +7,7 @@ const BarraLateral = () => (
     <div>
       <S.Campo type="text" placeholder="Buscar" />
       <S.Filtros>
-        <FiltroCard />
+        <FiltroCard legenda="todos" contador={10} />
       </S.Filtros>
     </div>
   </S.Aside>
