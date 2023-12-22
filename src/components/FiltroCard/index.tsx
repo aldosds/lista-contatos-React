@@ -1,15 +1,25 @@
+import { useSelector } from 'react-redux'
 import * as S from './styles'
+import { RootReducer } from '../../store'
 
 export type Props = {
-  contador: number
   legenda: string
 }
 
-const FiltroCard = ({ contador, legenda }: Props) => (
-  <S.Card>
-    <S.Contador>{contador}</S.Contador>
-    <S.Label>{legenda}</S.Label>
-  </S.Card>
-)
+const FiltroCard = ({ legenda }: Props) => {
+  const { contatos } = useSelector((state: RootReducer) => state)
+  const contarContatos = () => {
+    return contatos.itens.length
+  }
+
+  const contador = contarContatos()
+
+  return (
+    <S.Card>
+      <S.Contador>{contador}</S.Contador>
+      <S.Label>{legenda}</S.Label>
+    </S.Card>
+  )
+}
 
 export default FiltroCard

@@ -41,12 +41,12 @@ const contatosSlice = createSlice({
       ]
     },
     editar: (state, action: PayloadAction<Contato>) => {
-      const indexDaTarefa = state.itens.findIndex(
+      const indexDoContato = state.itens.findIndex(
         (c) => c.id === action.payload.id
       )
 
-      if (indexDaTarefa >= 0) {
-        state.itens[indexDaTarefa] = action.payload
+      if (indexDoContato >= 0) {
+        state.itens[indexDoContato] = action.payload
       }
     }
   }

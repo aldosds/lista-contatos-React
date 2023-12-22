@@ -19,7 +19,7 @@ const BarraLateral = () => {
           onChange={(evento) => dispatch(alterarTermo(evento.target.value))}
         />
         <S.Filtros>
-          <FiltroCard legenda="todos" contador={10} />
+          <FiltroCard legenda="todos" />
         </S.Filtros>
       </div>
     </S.Aside>

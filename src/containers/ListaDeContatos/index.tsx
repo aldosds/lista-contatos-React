@@ -8,17 +8,21 @@ const ListaDeContatos = () => {
   const { itens } = useSelector((state: RootReducer) => state.contatos)
   const { termo } = useSelector((state: RootReducer) => state.filtro)
 
-  const filtraTarefas = () => {
+  const filtraContatos = () => {
     return itens.filter(
       (item) => item.titulo.toLowerCase().search(termo.toLowerCase()) >= 0
     )
   }
 
+  const contatos = filtraContatos()
+
   return (
     <Container>
-      <p>2 contatos: {termo}</p>
+      <p>
+        {contatos.length} contato(s): {termo}
+      </p>
       <ul>
-        {filtraTarefas().map((c) => (
+        {contatos.map((c) => (
           <li key={c.titulo}>
             <Contato
               titulo={c.titulo}
