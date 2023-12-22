@@ -6,11 +6,19 @@ import { RootReducer } from '../../store'
 
 const ListaDeContatos = () => {
   const { itens } = useSelector((state: RootReducer) => state.contatos)
+  const { termo } = useSelector((state: RootReducer) => state.filtro)
+
+  const filtraTarefas = () => {
+    return itens.filter(
+      (item) => item.titulo.toLowerCase().search(termo.toLowerCase()) >= 0
+    )
+  }
+
   return (
     <Container>
-      <p>2 contatos: `&quot;`termo`&ldquo;`</p>
+      <p>2 contatos: {termo}</p>
       <ul>
-        {itens.map((c) => (
+        {filtraTarefas().map((c) => (
           <li key={c.titulo}>
             <Contato
               titulo={c.titulo}
