@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+
 import * as S from './styles'
+
 import { remover, editar } from '../../store/reducers/contatos'
 import ContatoClass from '../../models/Contato'
+import { Botao, BotaoSalvar, Complemento, Descricao, Nome } from '../../styles'
 
 type Props = ContatoClass
 
 const Contato = ({
-  titulo,
+  nome,
   descricao1: descricao1Original,
   descricao2: descricao2Original,
   complemento: complementoOriginal,
@@ -46,22 +49,25 @@ const Contato = ({
 
   return (
     <S.Card>
-      <S.Titulo>{titulo}</S.Titulo>
-      <S.Descricao
+      <Nome>
+        {' '}
+        {estaEditando && <em>Editando: </em>} {nome}
+      </Nome>
+      <Descricao
         disabled={!estaEditando}
         value={descricao1}
         onChange={(evento) => setDescricao1(evento.target.value)}
         type="email"
         placeholder="E-mail"
       />
-      <S.Descricao
+      <Descricao
         disabled={!estaEditando}
         value={descricao2}
         onChange={(evento) => setDescricao2(evento.target.value)}
         type="tel"
         placeholder="Telefone"
       />
-      <S.Complemento
+      <Complemento
         disabled={!estaEditando}
         value={complemento}
         onChange={(evento) => setComplemento(evento.target.value)}
@@ -70,11 +76,11 @@ const Contato = ({
       <S.BarraAcoes>
         {estaEditando ? (
           <>
-            <S.BotaoSalvar
+            <BotaoSalvar
               onClick={() => {
                 dispatch(
                   editar({
-                    titulo,
+                    nome,
                     descricao1: descricao1Original,
                     descricao2: descricao2Original,
                     complemento: complementoOriginal,
@@ -85,14 +91,14 @@ const Contato = ({
               }}
             >
               Salvar
-            </S.BotaoSalvar>
+            </BotaoSalvar>
             <S.BotaoCancelarRemover onClick={cancelarEdicao}>
               Cancelar
             </S.BotaoCancelarRemover>
           </>
         ) : (
           <>
-            <S.Botao onClick={() => setEstaEditando(true)}>Editar</S.Botao>
+            <Botao onClick={() => setEstaEditando(true)}>Editar</Botao>
             <S.BotaoCancelarRemover onClick={() => dispatch(remover(id))}>
               Remover
             </S.BotaoCancelarRemover>

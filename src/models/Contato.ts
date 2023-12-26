@@ -1,18 +1,18 @@
 class Contato {
-  titulo: string
+  nome: string
   descricao1: string
   descricao2: string
   complemento: string
   id: number
 
   constructor(
-    titulo: string,
+    nome: string,
     descricao1: string,
     descricao2: string,
     complemento: string,
     id: number
   ) {
-    this.titulo = titulo
+    this.nome = nome
     this.descricao1 = descricao1
     this.descricao2 = descricao2
     this.complemento = complemento
